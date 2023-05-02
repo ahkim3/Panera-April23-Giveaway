@@ -1,6 +1,6 @@
 # Panera Bread April 23 Giveaway Counter
 
-![Successful Submissions](https://shields.io/endpoint?url=https%3A%2F%2Fcellshield.info%2Fgs%3FspreadSheetId%3D1unWHFP-te-WIohFQgvvgmygrP2HV3clMSX-ZcG28iyg%26cellRange%3DC2&label=Successful%20Submissions&color=success&style=for-the-badge&logoWidth=150&logoHeight=40)
+![Successful Submissions](https://shields.io/endpoint?url=https%3A%2F%2Fcellshield.info%2Fgs%3FspreadSheetId%3D1unWHFP-te-WIohFQgvvgmygrP2HV3clMSX-ZcG28iyg%26cellRange%3DC2&label=Successful%20Submissions&color=success&style=for-the-badge&logoWidth=150&logoHeight=40?)
 
 This script automatically submits an alternative entry form for the Panera Bread April 23 Giveaway every few minutes, and keeps track of the number of successful submissions in a Google Sheets document, as well as locally.
 

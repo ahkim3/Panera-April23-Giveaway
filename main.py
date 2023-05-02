@@ -1,7 +1,18 @@
+import datetime
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 import random
 import requests
 import time
 
+
+# Define Google Sheets credentials
+scope = [
+    "https://spreadsheets.google.com/feeds",
+    "https://www.googleapis.com/auth/drive",
+]
+creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
+client = gspread.authorize(creds)
 
 url = "https://www.panerabread.com/content/panerabread_com/en-us/legal/fine-print/free-faves-thru-end-of-year-giveaway/free-faves-alternative-entry-form/_jcr_content/root/panera_form_copy_cop.paneraForm"
 data = {
@@ -9,6 +20,9 @@ data = {
     "emailAddress": "andrewhkim3@gmail.com",
     "MypaneraMemberNumber": "622071712765",
 }
+
+
+sheet = client.open("Panera-April23-Giveaway-Counter").sheet1
 
 
 # Read counter from file
@@ -38,6 +52,17 @@ try:
             print("Form submitted successfully (counter: " + str(counter) + ")")
             with open("counter.txt", "w") as f:
                 f.write(str(counter))
+
+            # Get the current date and time and format it as a string
+            now = datetime.datetime.now()
+            date_str = now.strftime("%m/%d/%Y")
+            time_str = now.strftime("%I:%M:%S %p")
+
+            # Update Google Sheets
+            row = [date_str, time_str, counter]
+            sheet.update_cell(2, 1, date_str)  # Update date in cell A2
+            sheet.update_cell(2, 2, time_str)  # Update time in cell B2
+            sheet.update_cell(2, 3, counter)  # Update counter in cell C2
 
             counter += 1
         else:

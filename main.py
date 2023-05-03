@@ -39,7 +39,7 @@ except FileNotFoundError:
 # Main loop
 try:
     while True:
-        delay = random.randint(3, 12)
+        delay = random.randint(4, 12)
 
         # Submit form
         response = requests.post(url, data=data)
@@ -49,22 +49,31 @@ try:
             response.status_code == 200
             and "<h4>Your submission was successful!</h4>" in response.text
         ):
+            counter += 1
+
             print("Form submitted successfully (counter: " + str(counter) + ")")
             with open("counter.txt", "w") as f:
                 f.write(str(counter))
 
-            # Get the current date and time and format it as a string
-            now = datetime.datetime.now()
-            date_str = now.strftime("%m/%d/%Y")
-            time_str = now.strftime("%I:%M:%S %p")
+            # Update every 75 submissions
+            if counter % 75 == 0:
+                # Get the current date and time and format it as a string
+                now = datetime.datetime.now()
+                date_str = now.strftime("%m/%d/%Y")
+                time_str = now.strftime("%I:%M:%S %p")
 
-            # Update Google Sheets
-            row = [date_str, time_str, counter]
-            sheet.update_cell(2, 1, date_str)  # Update date in cell A2
-            sheet.update_cell(2, 2, time_str)  # Update time in cell B2
-            sheet.update_cell(2, 3, counter)  # Update counter in cell C2
+                # Update Google Sheets
+                try:
+                    row = [date_str, time_str, counter]
+                    sheet.update_cell(2, 1, date_str)  # Update date in cell A2
+                    sheet.update_cell(2, 2, time_str)  # Update time in cell B2
+                    sheet.update_cell(2, 3, counter)  # Update counter in cell C2
+                    print("Google Sheets updated successfully")
+                except gspread.exceptions.APIError as e:
+                    print("Google Sheets API Error:", e)
+                except Exception as e:
+                    print("Error when updating Google Sheets:", e)
 
-            counter += 1
         else:
             print(
                 "Form submission failed (status code: "

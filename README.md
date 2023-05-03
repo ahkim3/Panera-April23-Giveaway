@@ -2,7 +2,7 @@
 
 ![Successful Submissions](https://shields.io/endpoint?url=https%3A%2F%2Fcellshield.info%2Fgs%3FspreadSheetId%3D1unWHFP-te-WIohFQgvvgmygrP2HV3clMSX-ZcG28iyg%26cellRange%3DD2&label=Successful%20Submissions&color=success&style=for-the-badge&logoWidth=150&logoHeight=40?)
 
-This script automatically submits an alternative entry form for the Panera Bread April 23 Giveaway every few minutes, and keeps track of the number of successful submissions in a Google Sheets document, as well as locally.
+This script automatically submits an alternative entry form for the Panera Bread April 23 Giveaway every few seconds, and keeps track of the number of successful submissions in a Google Sheets document, as well as locally.
 
 ## Requirements
 
@@ -37,4 +37,4 @@ This script automatically submits an alternative entry form for the Panera Bread
 
 2. The script will submit the form every few minutes and update the counter in the Google Sheets document.
 
-3. To view the counter, open the Google Sheets document and look at the value in cell A1.
+3. To view the counter, open the Google Sheets document and look at the value in cell D2.

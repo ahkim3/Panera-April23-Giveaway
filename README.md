@@ -14,7 +14,7 @@ This script automatically submits an alternative entry form for the Panera Bread
 1. Clone the repository to your local machine:
 
     ```bash
-    git clone https://github.com/username/panera-giveaway-counter.git
+    git clone https://github.com/ahkim3/Panera-April23-Giveaway.git
     ```
 
 2. Install the required packages using pip:
